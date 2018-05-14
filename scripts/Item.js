@@ -1,4 +1,4 @@
-/* global Item */
+/* global Item, cuid */
 
 'use strict';
 
@@ -23,5 +23,5 @@ const Item = (function() {
 		validateName: validateName,
 		create: create
 	};
-	
+
 }());
