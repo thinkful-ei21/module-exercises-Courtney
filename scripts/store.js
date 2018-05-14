@@ -15,17 +15,22 @@ const store = (function() {
   	searchTerm = '';
 
   const findById = function(id) {
-  	this.items.find(item => store.items.id === id);
+  	this.items.find(item => id === item.id);
   };
 
   const addItem = function(name) {
   	try {
       Item.validateName(name);
       this.items.push(Item.create(name));
-      console.log('item added');
+      
     } catch(err) {
       console.err('Cannot add item: {err.message}');
     }
+  };
+
+  const findAndToggleChecked = function(id) {
+  	const itemFound = this.findById(id);
+  	itemFound.checked = !itemFound.checked;
   };
 
 	return {
@@ -33,7 +38,8 @@ const store = (function() {
 		hideCheckedItems: hideCheckedItems,
 		searchTerm: searchTerm,
 		findById: findById,
-		addItem: addItem
+		addItem: addItem,
+		findAndToggleChecked: findAndToggleChecked
 	};
 
 }());
