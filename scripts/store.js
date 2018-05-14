@@ -43,6 +43,11 @@ const store = (function() {
   	}
   };
 
+  const findAndDelete = function(id) {
+  	const itemToDelete = this.findById(id);
+  	this.items.filter(item => itemToDelete);
+  };
+
 	return {
 		items: items,
 		hideCheckedItems: hideCheckedItems,
@@ -50,7 +55,8 @@ const store = (function() {
 		findById: findById,
 		addItem: addItem,
 		findAndToggleChecked: findAndToggleChecked,
-		findAndUpdate: findAndUpdate
+		findAndUpdate: findAndUpdate,
+		findAndDelete: findAndDelete
 	};
 
 }());
