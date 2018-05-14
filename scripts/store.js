@@ -1,4 +1,4 @@
-/* global store, cuid */
+/* global store, cuid, Item */
 
 'use strict';
 
@@ -15,14 +15,25 @@ const store = (function() {
   	searchTerm = '';
 
   const findById = function(id) {
-  	store.items.find(item => store.items.id === id);
+  	this.items.find(item => store.items.id === id);
+  };
+
+  const addItem = function(name) {
+  	try {
+      Item.validateName(name);
+      this.items.push(Item.create(name));
+      console.log('item added');
+    } catch(err) {
+      console.err('Cannot add item: {err.message}');
+    }
   };
 
 	return {
 		items: items,
 		hideCheckedItems: hideCheckedItems,
 		searchTerm: searchTerm,
-		findById: findById
+		findById: findById,
+		addItem: addItem
 	};
 
 }());
