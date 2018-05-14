@@ -14,11 +14,16 @@ const store = (function() {
   	hideCheckedItems = false,
   	searchTerm = '';
 
-  	return {
-  		items: items,
-  		hideCheckedItems: hideCheckedItems,
-  		searchTerm: searchTerm
-  	};
+  const findById = function(id) {
+  	store.items.find(item => store.items.id === id);
+  };
+
+	return {
+		items: items,
+		hideCheckedItems: hideCheckedItems,
+		searchTerm: searchTerm,
+		findById: findById
+	};
 
 }());
 
